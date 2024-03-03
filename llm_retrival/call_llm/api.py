@@ -4,7 +4,7 @@ from .fleschk import calculate_flesch_reading_ease
 
 
 def simplifiedText(text):
-    client = OpenAI(api_key="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")
+    client = OpenAI(api_key="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")
     # Define the prompt and additional text you want to enhance for readability
     prompt = "Enhance the readability of the following essay. Keep the core information and message intact but use simpler words and sentences:"
     paragraph = 0
