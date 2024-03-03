@@ -1,10 +1,10 @@
 from openai import OpenAI
 
-from llm_retrival.call_llm.fleschk import calculate_flesch_reading_ease
+from .fleschk import calculate_flesch_reading_ease
 
 
 def simplifiedText(text):
-    client = OpenAI(api_key="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")
+    client = OpenAI(api_key="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")
     # Define the prompt and additional text you want to enhance for readability
     prompt = "Enhance the readability of the following essay. Keep the core information and message intact but use simpler words and sentences:"
     paragraph = 0
@@ -26,11 +26,11 @@ def actualSimplified(text):
     # Assuming you want to print the completion part by part
     results = {}
     count = 0
-    score = calculate_flesch_reading_ease(product)
-    while count < 5:
+    while count < 3:
+        score = calculate_flesch_reading_ease(product)
         if score < 80:
             results[score] = product
-            product = simplifiedText()
+            product = simplifiedText(text)
         else:
             return product
         count += 1

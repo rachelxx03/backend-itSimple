@@ -1,8 +1,9 @@
 from django.urls import path
 from . import views
-from .views import ReturnTwoAPIView
+from .views import CustomObjectAPIView
 
 urlpatterns = [
     path("", views.home, name="home"),
-    path('return-two/', ReturnTwoAPIView.as_view(), name='return-two'),
+    path('your-endpoint/', CustomObjectAPIView.as_view(), name='custom-object'),
+
 ]
