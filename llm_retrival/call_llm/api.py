@@ -1,10 +1,17 @@
+import os
+
+from dotenv import load_dotenv
 from openai import OpenAI
 
 from .fleschk import calculate_flesch_reading_ease
 
-
+load_dotenv()
 def simplifiedText(text):
-    client = OpenAI(api_key="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")
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise ValueError("The OpenAI API key has not been set.")
+
+    client = OpenAI(api_key=api_key)
     # Define the prompt and additional text you want to enhance for readability
     prompt = "Enhance the readability of the following essay. Keep the core information and message intact but use simpler words and sentences:"
     paragraph = 0
