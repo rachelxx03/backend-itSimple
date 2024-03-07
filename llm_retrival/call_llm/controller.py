@@ -1,5 +1,6 @@
 from .api import actualSimplified
 from .keyword_extraction import KeyphraseExtractionPipeline
+import string
 
 
 class Controller():
@@ -17,8 +18,11 @@ class Controller():
 
         def get_key_word(self,text):
 
-            extractor = KeyphraseExtractionPipeline()
-            return extractor(text)
+            extractor = KeyphraseExtractionPipeline(model="ml6team/keyphrase-extraction-kbir-openkp")
+            punctuation = string.punctuation
+            trans_table = str.maketrans('', '', punctuation)
+            cleaned_words = [word.translate(trans_table) for word in extractor(text)]
+            return cleaned_words
 
 
 
