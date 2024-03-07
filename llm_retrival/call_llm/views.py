@@ -42,3 +42,5 @@ class CustomObjectAPIView(APIView):
     permission_classes = [AllowAny]
     def get(self, request, format=None):
         return Response(object, status=status.HTTP_200_OK)
+    def post(self,string):
+        return Response(object, status=status.HTTP_200_OK)
